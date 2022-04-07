@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         PRDownloader.initialize(applicationContext, config)
 
 
-        binding.sampleText.text = getFilesDir().getAbsolutePath()
-        Toast.makeText(baseContext, pathFromJNI(getFilesDir().getAbsolutePath()), Toast.LENGTH_SHORT)
-            .show()
+        binding.sampleText.text = pathFromJNI(getFilesDir().getAbsolutePath())
+        /*Toast.makeText(baseContext, pathFromJNI(getFilesDir().getAbsolutePath()), Toast.LENGTH_SHORT)
+            .show()*/
        /* btnDownload.setOnClickListener {
             val url =
                 "https://terrence-aluda.com/dataset/heart.csv"
