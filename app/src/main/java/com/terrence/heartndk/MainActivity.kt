@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        btnDownload = binding.btnDownload
+        //btnDownload = binding.btnDownload
         progressBar = binding.progressBar
         // Example of a call to a native method
-        binding.sampleText.text = stringFromJNI()
+       // binding.sampleText.text = stringFromJNI()
 
         // Initialize PRDownloader with read and connection timeout
         val config = PRDownloaderConfig.newBuilder()
@@ -33,13 +33,17 @@ class MainActivity : AppCompatActivity() {
             .build()
         PRDownloader.initialize(applicationContext, config)
 
-            btnDownload.setOnClickListener {
-                val url =
-                    "https://raw.githubusercontent.com/javahelps/externalsqliteimporter/master/README.md"
-                val fileName = "readme.md"
 
-                download(url, fileName)
-            }
+        binding.sampleText.text = getFilesDir().getAbsolutePath()
+        Toast.makeText(baseContext, pathFromJNI(getFilesDir().getAbsolutePath()), Toast.LENGTH_SHORT)
+            .show()
+       /* btnDownload.setOnClickListener {
+            val url =
+                "https://terrence-aluda.com/dataset/heart.csv"
+            val fileName = "heart.csv"
+
+            download(url, fileName)
+        } */
 
     }
 
@@ -63,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 
                     // Read the file
                     //readFile(fileName)
+                    Toast.makeText(baseContext, "done", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 override fun onError(error: com.downloader.Error?) {
@@ -78,6 +84,8 @@ class MainActivity : AppCompatActivity() {
      * which is packaged with this application.
      */
     external fun stringFromJNI(): String
+
+    external fun pathFromJNI(path: String): String
 
     companion object {
         // Used to load the 'heartndk' library on application startup.
