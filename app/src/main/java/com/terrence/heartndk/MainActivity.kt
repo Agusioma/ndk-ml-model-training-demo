@@ -33,8 +33,11 @@ class MainActivity : AppCompatActivity() {
             .build()
         PRDownloader.initialize(applicationContext, config)
 
+        //val array2: Array<Double> = arrayOf(57.0,0.0,0.0,140.0,241.0,0.0,1.0,123.0,1.0,0.2,1.0,0.0,3.0)
+        binding.sampleText.text = testArr(getFilesDir().getAbsolutePath())
+        //var myArray2 = arrayOf<Int>(1,10,4,6,15)
 
-        binding.sampleText.text = pathFromJNI(getFilesDir().getAbsolutePath())
+
         /*Toast.makeText(baseContext, pathFromJNI(getFilesDir().getAbsolutePath()), Toast.LENGTH_SHORT)
             .show()*/
        /* btnDownload.setOnClickListener {
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
      * which is packaged with this application.
      */
     external fun stringFromJNI(): String
-
+    external fun testArr(path: String): String
     external fun pathFromJNI(path: String): String
 
     companion object {
