@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
        // download(url, fileName)
 
-        //passing the directory of the downloaded file location
+        //passing the directory of the downloaded file location and then displaying the return value to the textview
         binding.sampleText.text = testPrediction(getFilesDir().getAbsolutePath())
 
     }
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         // Used to load the 'heartndk' library on application startup.
         init {
-            System.loadLibrary("native-lib")
+            System.loadLibrary("heartndk")
         }
     }
 }
